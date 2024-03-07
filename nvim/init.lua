@@ -409,6 +409,7 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>sf', function()
         builtin.find_files {
           hidden = true,
+          search_dirs = { '~/Developer/' },
         }
       end, { desc = '[S]earch [F]iles' })
 
