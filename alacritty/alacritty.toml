@@ -1,0 +1,12 @@
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
+[window]
+decorations = "buttonless"
+opacity = 0.85
+startup_mode = "SimpleFullscreen"
+
+# was 5,5
+[window.padding]
+x = 3
+y = 0
