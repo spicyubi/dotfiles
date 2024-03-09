@@ -13,19 +13,6 @@ error_symbol = '[](bold red)'
 truncation_length = 1
 truncate_to_repo = true
 
-[username]
-style_user = "blue bold"
-style_root = "red bold"
-format = "[](bold white) "
-disabled = true
-show_always = true
-
-[hostname]
-ssh_only = false
-format = '[$hostname](bold purple)'
-trim_at = "."
-disabled = true
-
 # Separates the prompt into two lines
 [line_break]
 disabled = true
