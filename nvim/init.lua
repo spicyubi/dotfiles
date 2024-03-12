@@ -672,7 +672,7 @@ require('lazy').setup {
         },
         on_highlights = function(h1, c)
           h1.TelescopeBorder = {
-            guifg = c.white,
+            fg = c.white,
           }
         end,
       }
