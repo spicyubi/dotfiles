@@ -305,7 +305,7 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
+          winblend = 0,
           previewer = false,
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
@@ -670,6 +670,11 @@ require('lazy').setup {
           sidebars = 'transparent',
           floats = 'transparent',
         },
+        on_highlights = function(h1, c)
+          h1.TelescopeBorder = {
+            guifg = c.white,
+          }
+        end,
       }
       -- Load the colorscheme here
       -- vim.cmd.colorscheme 'tokyonight-night'
