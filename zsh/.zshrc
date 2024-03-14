@@ -38,6 +38,3 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 
 # Bindings
 bindkey -s ^f "tmux-sessionizer\n"
-
-# TMUX Colors
-eval "$(tokyo_night.tmux)"
