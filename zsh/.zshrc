@@ -9,9 +9,6 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# enable Vi mode for the shell prompt
-set -o vi
-
 # If in git repo truncate directory
 function zsh_directory_name() {
   emulate -L zsh
@@ -25,3 +22,12 @@ function zsh_directory_name() {
   done
   return 1
 }
+
+# enable Vi mode for the shell prompt
+set -o vi
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
+
+# Bindings
+bindkey -s ^f "tmux-sessionizer\n"
