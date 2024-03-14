@@ -29,5 +29,15 @@ set -o vi
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 
+# fzf tokyonight theme
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--color=fg:#c0caf5,hl:#0db9d7 \
+--color=fg+:#c0caf5,hl+:#0db9d7 \
+--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff \
+--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a"
+
 # Bindings
 bindkey -s ^f "tmux-sessionizer\n"
+
+# TMUX Colors
+eval "$(tokyo_night.tmux)"
