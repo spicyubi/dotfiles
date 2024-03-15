@@ -674,6 +674,9 @@ require('lazy').setup {
           h1.TelescopeBorder = {
             fg = c.white,
           }
+          h1.Pmenu = {
+            bg = 'none',
+          }
         end,
       }
       -- Load the colorscheme here
