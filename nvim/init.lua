@@ -469,7 +469,7 @@ require('lazy').setup {
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -614,6 +614,9 @@ require('lazy').setup {
           ['<C-n>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
+          -- scroll
+          ['<C-j>'] = cmp.mapping.scroll_docs(4),
+          ['<C-k>'] = cmp.mapping.scroll_docs(-4),
 
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
@@ -741,6 +744,14 @@ require('lazy').setup {
       --    - Incremental selection: Included, see :help nvim-treesitter-incremental-selection-mod
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    end,
+  },
+  {
+    'jpalardy/vim-slime',
+    config = function()
+      vim.g.slime_target = 'tmux'
+      vim.g.slime_default_config = { socket_name = 'default', target_pane = '{last}' }
+      vim.g.slime_bracketed_paste = 1
     end,
   },
 

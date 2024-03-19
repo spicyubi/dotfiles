@@ -13,11 +13,20 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+# create a new session if tmux isn't running
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    exit 0
+    if [[ -d "$selected/.venv" ]] ; then
+        tmux new-session -d -s $selected_name -c $selected 
+        tmux send-keys -c=$selected_name "source ~/.local/scripts/activate-venv;clear" ENTER
+        tmux attach-session -t=$selected_name
+        exit 0
+    else
+        tmux new-session -s $selected_name -c $selected 
+        exit 0
+    fi
 fi
 
+# if currently in a session and want to switch then detach and reattach
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
