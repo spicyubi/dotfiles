@@ -472,6 +472,7 @@ require('lazy').setup {
         pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+        tailwindcss = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
@@ -599,6 +600,16 @@ require('lazy').setup {
 
       -- cmp setup
       cmp.setup {
+        -- window config
+        window = {
+          completion = {
+            border = 'rounded',
+          },
+          documentation = {
+            border = 'rounded',
+          },
+        },
+        -- specify snippet engine (luasnip)
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
