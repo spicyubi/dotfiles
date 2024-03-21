@@ -589,7 +589,7 @@ require('lazy').setup {
       --    you can use this plugin to help you. It even has snippets
       --    for various frameworks/libraries/etc. but you will have to
       --    set up the ones that are useful for you.
-      -- 'rafamadriz/friendly-snippets',
+      'rafamadriz/friendly-snippets',
     },
     config = function()
       -- See `:help cmp`
@@ -597,6 +597,7 @@ require('lazy').setup {
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
 
+      -- cmp setup
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -653,6 +654,9 @@ require('lazy').setup {
           { name = 'path' },
         },
       }
+
+      -- friendly snippets setup
+      require('luasnip.loaders.from_vscode').lazy_load()
     end,
   },
 
