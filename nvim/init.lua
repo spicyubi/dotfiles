@@ -8,16 +8,13 @@ vim.g.maplocalleader = ' '
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
--- TODO: Add map for :Ex to <leader>pv
-
 -- netrw settings
+vim.keymap.set('n', '<leader>n', ':Ex<Enter>', { desc = '[N]etrw' })
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 0
 
 -- [[ Setting options ]]
--- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+-- See `:help vim.opt` For more options, you can see `:help option-list`
 
 -- Make line numbers default
 vim.opt.number = true
