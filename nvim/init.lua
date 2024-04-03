@@ -4,22 +4,14 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- remap half page down and up to center cursor after doing so
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
--- netrw settings
 vim.keymap.set('n', '<leader>n', ':Ex<Enter>', { desc = '[N]etrw' })
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 0
 
--- [[ Setting options ]]
--- See `:help vim.opt` For more options, you can see `:help option-list`
-
--- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, for help with jumping.
---  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -29,8 +21,6 @@ vim.opt.mouse = ''
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
