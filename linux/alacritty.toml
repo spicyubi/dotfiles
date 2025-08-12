@@ -1,0 +1,52 @@
+[general]
+live_config_reload = true
+# working_directory = ""
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style= "Regular"}
+bold = { family = "JetBrainsMono Nerd Font", style= "Bold"}
+italic = { family = "JetBrainsMono Nerd Font", style= "Italic"}
+bold_italic = { family = "JetBrainsMono Nerd Font", style= "Bold Italic"}
+size = 15
+
+[window]
+decorations = "None"
+opacity = 1.0
+startup_mode = "Windowed"
+
+# was 5,5
+#[window.padding]
+#x = 3
+#y = 0
+
+# TokyoNight Alacritty Colors
+# Default colors
+[colors]
+cursor = {cursor = '#acb0d0', text = '#1a1b26'}
+
+[colors.primary]
+background = "#1a1b26"
+foreground = "#a9b1d6"
+
+[colors.bright]
+black = "#444b6a"
+blue = "#7da6ff"
+cyan = "#0db9d7"
+green = "#b9f27c"
+magenta = "#bb9af7"
+red = "#ff7a93"
+white = "#acb0d0"
+yellow = "#ff9e64"
+
+[colors.normal]
+black = "#32344a"
+blue = "#7aa2f7"
+cyan = "#449dab"
+green = "#9ece6a"
+magenta = "#ad8ee6"
+red = "#f7768e"
+white = "#787c99"
+yellow = "#e0af68"
+
