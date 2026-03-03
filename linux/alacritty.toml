@@ -23,29 +23,69 @@ startup_mode = "Windowed"
 
 # TokyoNight Alacritty Colors
 # Default colors
+# [colors]
+# cursor = {cursor = '#acb0d0', text = '#1a1b26'}
+#
+# [colors.primary]
+# background = "#1a1b26"
+# foreground = "#a9b1d6"
+#
+# [colors.bright]
+# black = "#444b6a"
+# blue = "#7da6ff"
+# cyan = "#0db9d7"
+# green = "#b9f27c"
+# magenta = "#bb9af7"
+# red = "#ff7a93"
+# white = "#acb0d0"
+# yellow = "#ff9e64"
+#
+# [colors.normal]
+# black = "#32344a"
+# blue = "#7aa2f7"
+# cyan = "#449dab"
+# green = "#9ece6a"
+# magenta = "#ad8ee6"
+# red = "#f7768e"
+# white = "#787c99"
+# yellow = "#e0af68"
+
+# Kanagawa Dragon Alacritty Colors
 [colors]
 cursor = {cursor = '#acb0d0', text = '#1a1b26'}
 
 [colors.primary]
-background = "#1a1b26"
-foreground = "#a9b1d6"
-
-[colors.bright]
-black = "#444b6a"
-blue = "#7da6ff"
-cyan = "#0db9d7"
-green = "#b9f27c"
-magenta = "#bb9af7"
-red = "#ff7a93"
-white = "#acb0d0"
-yellow = "#ff9e64"
+background = '#181616'
+foreground = '#c5c9c5'
 
 [colors.normal]
-black = "#32344a"
-blue = "#7aa2f7"
-cyan = "#449dab"
-green = "#9ece6a"
-magenta = "#ad8ee6"
-red = "#f7768e"
-white = "#787c99"
-yellow = "#e0af68"
+black = '#0d0c0c'
+red = '#c4746e'
+green = '#8a9a7b'
+yellow = '#c4b28a'
+blue = '#8ba4b0'
+magenta = '#a292a3'
+cyan = '#8ea4a2'
+white = '#c8c093'
+
+[colors.bright]
+black = '#a6a69c'
+red = '#e46876'
+green = '#87a987'
+yellow = '#e6c384'
+blue = '#7fb4ca'
+magenta = '#938aa9'
+cyan = '#7aa89f'
+white = '#c5c9c5'
+
+[colors.selection]
+background = '#2d4f67'
+foreground = '#c8c093'
+
+[[colors.indexed_colors]]
+index = 16
+color = '#b6927b'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#b98d7b'
