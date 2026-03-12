@@ -3,6 +3,7 @@ vim.pack.add({
 	{src='https://github.com/NMAC427/guess-indent.nvim'},
 	{src='https://github.com/nvim-treesitter/nvim-treesitter', version = 'master'},
 	{src='https://github.com/folke/snacks.nvim'},
+	{src='https://github.com/neovim/nvim-lspconfig'},
 	{src='https://github.com/nvim-lua/plenary.nvim'},
 	{src='https://github.com/MunifTanjim/nui.nvim'},
 	{src='https://github.com/kawre/leetcode.nvim'},
@@ -49,8 +50,13 @@ vim.keymap.set('n', '<leader>g', function() Snacks.picker.grep({icons={files={en
 vim.keymap.set('n', '<leader>h', function() Snacks.picker.help() end, {desc = "Help"})
 vim.keymap.set('n', '<leader>c', function() Snacks.picker.command_history() end, {desc = "Command History"})
 vim.keymap.set('n', '<leader>q', function() Snacks.picker.qflist() end, {desc = "Quickfix List"})
+vim.keymap.set('n', '<leader>dl', function() Snacks.picker.diagnostics_buffer() end, {desc = "Buffer Diagnostics"})
 
 require('leetcode').setup({
 	lang = 'python3',
 	arg = 'leet',
 })
+
+vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)
+-- vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist)
+vim.lsp.enable({'clangd'})

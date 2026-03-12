@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 0
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -30,6 +30,7 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
+vim.keymap.set('n', '<leader>e', ':e!<Enter>')
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
