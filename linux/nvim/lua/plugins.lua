@@ -44,8 +44,8 @@ require('nvim-treesitter.configs').setup({
 require('snacks').setup({
     picker = { enabled = true },
 })
-vim.keymap.set('n', '<leader>s', function() Snacks.picker.smart({icons={files={enabled=false}}}) end, {desc="Smart Find Files"})
-vim.keymap.set('n', '<leader>b', function() Snacks.picker.buffers({icons={files={enabled=false}}}) end, {desc = "Buffers"})
+vim.keymap.set('n', '<leader><space>', function() Snacks.picker.smart({icons={files={enabled=false}}}) end, {desc="Smart Find Files"})
+vim.keymap.set('n', '<leader>fb', function() Snacks.picker.buffers({icons={files={enabled=false}}}) end, {desc = "Buffers"})
 vim.keymap.set('n', '<leader>g', function() Snacks.picker.grep({icons={files={enabled=false}}}) end, {desc = "Grep"})
 vim.keymap.set('n', '<leader>h', function() Snacks.picker.help() end, {desc = "Help"})
 vim.keymap.set('n', '<leader>c', function() Snacks.picker.command_history() end, {desc = "Command History"})
