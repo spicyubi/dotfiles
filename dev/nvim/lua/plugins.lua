@@ -105,8 +105,8 @@ dap.adapters.codelldb = {
 dap.adapters.gdb = {
 	type = "executable",
 	command = "gdb",
-	args = { "--interpreter=dap", "--eval-command", "set print pretty on",
-	"-iex", "set substitute-path /app/code /mnt/code" }
+	args = { "--interpreter=dap", "--eval-command", "set print pretty on"}
+	-- "-iex", "set substitute-path /app/code /mnt/code" }
 }
 -- dap.configurations.cpp = {
 -- 	{
