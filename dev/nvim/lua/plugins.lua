@@ -30,15 +30,6 @@ vim.cmd(':hi statusline guibg=None')
 vim.cmd(':hi SignColumn guibg=None')
 vim.cmd(':hi LineNr guibg=None')
 
--- require('nvim-treesitter.configs').setup({
--- 	ensure_installed = { 'python', 'bash', 'c','lua', 'luadoc', 'vim', 'vimdoc'},
--- 	auto_install = false,
--- 	highlight = {enable = true,additional_vim_regex_highlighting=false},
--- 	indent = { enable = true},
--- })
--- todo: use autocommand callback
--- vim.cmd(':TSUpdate')
-
 require('snacks').setup({
     picker = { enabled = true },
 })
@@ -90,35 +81,20 @@ vim.lsp.enable({'clangd'})
 local dap = require('dap')
 local widgets = require('dap.ui.widgets')
 -- just having this require block stops the terminal from auto starting. if you comment out the below, terminal will autostart.
-require('dap-view').setup({
-	windows = {
-		terminal = {
+-- require('dap-view').setup({
+-- 	windows = {
+-- 		terminal = {
 			-- hide = { "codelldb" }, -- hide when toggling
-		},
-	},
-})
-
-dap.adapters.codelldb = {
-	type = "executable",
-	command = "codelldb",
-}
+-- 		},
+-- 	},
+-- })
 dap.adapters.gdb = {
 	type = "executable",
 	command = "gdb",
 	args = { "--interpreter=dap", "--eval-command", "set print pretty on"}
-	-- "-iex", "set substitute-path /app/code /mnt/code" }
 }
--- dap.configurations.cpp = {
--- 	{
--- 		name = "Launch MariaDB",
--- 		type = "gdb",
--- 		request = "launch",
--- 		program = "/app/build/sql/mariadbd",
--- 		-- sourceMap = {["/app/code"] = "/mnt/code"},
--- 		cwd = "${workspaceFolder}"
--- 	}
--- }
--- sourceMap = {{"/app/code", "/mnt/code"}}, -- for lldb
+dap.configurations.c = dap.configurations.cpp
+
 vim.keymap.set('n', '<leader>dc', function() dap.continue() end)
 vim.keymap.set('n', '<leader>dn', function() dap.step_over() end)
 vim.keymap.set('n', '<leader>dj', function() dap.step_into() end)

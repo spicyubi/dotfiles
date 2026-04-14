@@ -1,7 +1,6 @@
 vim.pack.add({
 	{src='https://github.com/rebelot/kanagawa.nvim'},
 	{src='https://github.com/NMAC427/guess-indent.nvim'},
-	{src='https://github.com/nvim-treesitter/nvim-treesitter', version = 'master'},
 	{src='https://github.com/folke/snacks.nvim'},
 	{src='https://github.com/neovim/nvim-lspconfig'},
 	{src='https://github.com/nvim-lua/plenary.nvim'},
@@ -32,12 +31,6 @@ vim.cmd(':hi statusline guibg=None')
 vim.cmd(':hi SignColumn guibg=None')
 vim.cmd(':hi LineNr guibg=None')
 
-require('nvim-treesitter.configs').setup({
-	ensure_installed = { 'python', 'bash', 'c','lua', 'luadoc', 'vim', 'vimdoc', 'html' },
-	auto_install = false,
-	highlight = {enable = true,additional_vim_regex_highlighting=false},
-	indent = { enable = true},
-})
 -- todo: use autocommand callback
 -- vim.cmd(':TSUpdate')
 
@@ -52,11 +45,39 @@ vim.keymap.set('n', '<leader>c', function() Snacks.picker.command_history() end,
 vim.keymap.set('n', '<leader>q', function() Snacks.picker.qflist() end, {desc = "Quickfix List"})
 vim.keymap.set('n', '<leader>dl', function() Snacks.picker.diagnostics_buffer() end, {desc = "Buffer Diagnostics"})
 
+-- enabled only when lsp is attached
+vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('lsp-attach-group', {}),
+        callback = function(event)
+          -- local buf = event.buf
+          -- To jump back, press <C-t>.
+          vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, {desc = "Goto Definition"})
+          vim.keymap.set('n', 'gD', function() Snacks.picker.lsp_declarations() end, {desc = "Goto Declaration"})
+	  vim.keymap.set('n', 'gjt', function() Snacks.picker.lsp_type_definitions() end, {desc = "Goto Type Definition" })
+	  vim.keymap.set('n', 'gjr', function() Snacks.picker.lsp_references() end, {nowait = true, desc = "References"})
+	  vim.keymap.set('n', 'gji', function() Snacks.picker.lsp_implementations() end, {desc = "Goto Implementations"})
+	  vim.keymap.set('n', '<leader>fs', function() Snacks.picker.lsp_symbols({filter = {default = lsp_symbols}}) end, { desc = "LSP Document Symbols" })
+	  vim.keymap.set('n', '<leader>fws', function() Snacks.picker.lsp_workspace_symbols({filter = {default = lsp_symbols}}) end, { desc = "LSP Workspace Symbols" })
+	  vim.keymap.set('n', '<leader>fd', function() Snacks.picker.diagnostics_buffer() end, {desc = "Buffer Diagnostics"})
+        end,
+      })
+vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)
+
+vim.keymap.set('n', '<leader>lr', ':Leet run<Enter>')
+vim.keymap.set('n', '<leader>ls', ':Leet submit<Enter>')
+vim.keymap.set('n', '<leader>ll', ':Leet lang<Enter>')
+vim.keymap.set('n', '<leader>lf', ':Leet list<Enter>')
+vim.keymap.set('n', '<leader>lt', ':Leet tabs<Enter>')
+vim.keymap.set('n', '<leader>le', ':Leet exit<Enter>')
+vim.keymap.set('n', '<leader>lo', ':Leet open<Enter>')
+vim.keymap.set('n', '<leader>ld', ':Leet desc<Enter>')
 require('leetcode').setup({
 	lang = 'python3',
 	arg = 'leet',
 })
-
-vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)
--- vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist)
-vim.lsp.enable({'clangd'})
+vim.lsp.enable(
+	{
+		'clangd',
+		'marksman'
+	}
+)

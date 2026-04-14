@@ -31,15 +31,6 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 
-vim.keymap.set('n', '<leader>lr', ':Leet run<Enter>')
-vim.keymap.set('n', '<leader>ls', ':Leet submit<Enter>')
-vim.keymap.set('n', '<leader>ll', ':Leet lang<Enter>')
-vim.keymap.set('n', '<leader>lf', ':Leet list<Enter>')
-vim.keymap.set('n', '<leader>lt', ':Leet tabs<Enter>')
-vim.keymap.set('n', '<leader>le', ':Leet exit<Enter>')
-vim.keymap.set('n', '<leader>lo', ':Leet open<Enter>')
-vim.keymap.set('n', '<leader>ld', ':Leet desc<Enter>')
-
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
