@@ -1,0 +1,40 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$character\
+$hostname\
+$directory\
+$git_branch\
+[ ](bright-yellow)
+"""
+# [ ](#d74f0d)
+add_newline = false
+
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[ ➜](bold bright-cyan)'
+error_symbol = '[ ➜](bold bright-red)'
+
+[hostname]
+style='bold blink red'
+ssh_only=true
+format='[$ssh_symbol$hostname]($style) '
+
+[directory]
+truncation_length=3
+truncate_to_repo=true
+style='bright-cyan'
+format='[$path]($style)[$read_only]($read_only_style) '
+
+[username]
+show_always=false
+format='[$user]($style) '
+
+[git_branch]
+style='bold red'
+symbol=' '
+format='[\[ ](bold bright-cyan)[$symbol$branch(:$remote_branch) ]($style)[\]](bold bright-cyan) '
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true

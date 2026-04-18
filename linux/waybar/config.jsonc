@@ -1,0 +1,194 @@
+// -*- mode: jsonc -*-
+// neon shallows
+    // # light blue: rgba(0AFDCBee)
+    // # light green: rgba(10FF6Aee)
+    // # neon red: rgba(EB2351ee)
+    // # black: rgba(1B1D29ee)
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        // "hyprland/workspaces",
+        // "hyprland/submap",
+        "custom/lbracket",
+        "clock",
+        "custom/rbracket",
+        "custom/lbracket",
+        "network",
+        "custom/rbracket",
+        "custom/lbracket",
+        "custom/vpn",
+        "custom/rbracket"
+        // "sway/scratchpad",
+        // "custom/media"
+    ],
+    // "modules-center": [
+        // "hyprland/window"
+    // ],
+    "modules-right": [
+        // "mpd",
+        // "idle_inhibitor",
+        // "pulseaudio",
+//        "power-profiles-daemon",
+        "custom/lbracket",
+        "cpu",
+        "custom/rbracket",
+        "custom/lbracket",
+        "memory",
+        "custom/rbracket",
+        "custom/lbracket",
+        "temperature",
+        "custom/rbracket",
+        // "backlight",
+        // "keyboard-state",
+        // "hyprland/language",
+        "custom/lbracket",
+        "battery",
+        "battery#bat0",
+        "battery#bat1",
+        "custom/rbracket"
+        // "tray",
+        // "custom/power"
+    ],
+    "custom/lbracket": {
+       "interval": "once",
+       "format": "[",
+       "max-length": "100"
+    },
+    "custom/rbracket": {
+       "interval": "once",
+       "format": "]",
+       "max-length": "100"
+    },
+    "custom/vpn": {
+       "interval": 10,
+       "format": "{}",
+       "exec": "output=$(ip add show | grep -o -m 1 'mango[^:]*' | sed -E 's/^[^-]+-([^-]+)-.*$/\\1/')\nif [ -n \"$output\" ]; then\n echo \" $output\"\nelse\n  echo ' Disconnected'\nfi",
+       "max-length": "100"
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "en",
+        "format-jp": "jp",
+        "keyboard-name": "at-translated-set-2-keyboard"
+    },
+    // Modules configuration
+    "clock": {
+        // "timezone": "America/New_York",
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%m-%d<span color='#c4b28a'>  |  </span>%H:%M}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "  {capacity}% {icon}",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat0": {
+        "bat": "BAT0",
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat1": {
+        "bat": "BAT1",
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " ",
+        // "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        // "tooltip-format": "{ifname} via {gwaddr} ",
+        // "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": " ",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/power": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}
