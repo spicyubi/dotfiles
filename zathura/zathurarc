@@ -1,0 +1,5 @@
+# ui text
+set font 'monospace normal 11'
+
+# enable copy to clipboard
+set selection-clipboard clipboard
