@@ -9,6 +9,8 @@ fastfetch
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias pf='~/scripts/port-forwarding.sh'
+alias info='info --vi-keys'
+
 PS1='[\u@\h \W]\$ '
 
 # arch linux docs. start ssh agent automatically
