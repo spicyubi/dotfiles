@@ -93,7 +93,7 @@ dap.adapters.gdb = {
 	command = "gdb",
 	args = { "--interpreter=dap", "--eval-command", "set print pretty on"}
 }
-dap.configurations.c = dap.configurations.cpp
+-- dap.configurations.c = dap.configurations.cpp
 
 vim.keymap.set('n', '<leader>dc', function() dap.continue() end)
 vim.keymap.set('n', '<leader>dn', function() dap.step_over() end)
